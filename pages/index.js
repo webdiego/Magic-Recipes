@@ -25,10 +25,10 @@ export default function Home({ recipes }) {
       <Head />
       <NavBar route="list" />
       <div className="flex items-center flex-col justify-center h-screen">
-        <div className="flex items-center flex-col justify-center mt-12">
+        <div className="flex items-center flex-col justify-center md:mt-12">
           <h1
             ref={textRef}
-            className="font-black absolute top-28 z-10 text-[40px]  md:text-[70px] lg:text-[100px] "
+            className="font-black absolute top-48 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] "
           >
             MAGIC RECIPES
           </h1>
