@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Pizza() {
+export default function Pizza() {
   const [rotate, setRotate] = useState(false);
   const animation = () => {
     setTimeout(() => {
@@ -14,7 +14,7 @@ function Pizza() {
           setRotate(true);
           animation();
         }}
-        src={'/pizza.svg'}
+        src={'/Pizza.svg'}
         className={`w-16 md:w-24 self-end mx-8 mt-4 ${
           rotate ? 'rotate-center' : null
         } cursor-pointer `}
@@ -22,5 +22,3 @@ function Pizza() {
     </>
   );
 }
-
-export default Pizza;
