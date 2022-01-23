@@ -45,7 +45,6 @@ export const getServerSideProps = async (pageContext) => {
   const url = `https://${process.env.API_KEY}.api.sanity.io/v1/data/query/production?query=${query}`;
   const result = await fetch(url).then((res) => res.json());
   const recipe = result.result[0];
-  console.log(recipe);
   if (!recipe) {
     return {
       notFound: true,

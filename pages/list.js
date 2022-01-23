@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export default function Home({ recipes }) {
   const router = useRouter();
   const [search, setSearch] = useState('');
-  console.log(search);
+
   return (
     <>
       <NavBar route="home" />

@@ -71,7 +71,7 @@ export const getServerSideProps = async () => {
   const query = encodeURIComponent(`*[ _type == "recipe" ]`);
   const url = `https://${process.env.API_KEY}.api.sanity.io/v1/data/query/production?query=${query}`;
   const result = await fetch(url).then((res) => res.json());
-  console.log(result);
+
   if (!result.result || !result.result.length) {
     return {
       props: {
