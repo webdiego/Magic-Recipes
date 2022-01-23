@@ -6,7 +6,7 @@ export default function Recipe({ title, ingredients, preparation }) {
     <>
       <NavBar route="home" route_2="list" />
 
-      <div className="flex items-start flex-col justify-center  mx-8 mt-12">
+      <div className="flex items-start flex-col justify-center  mx-8 mt-12 min-h-screen">
         <h1 className="text-4xl font-bold uppercase mb-8">{title}</h1>
         <div className="my-8 w-full">
           <h1 className="text-lg font-bold mb-4">INGREDIENTS</h1>

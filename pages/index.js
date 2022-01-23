@@ -23,8 +23,8 @@ export default function Home({ recipes }) {
   return (
     <>
       <Head />
-      <div className="flex items-center flex-col justify-center">
-        <NavBar route="list" />
+      <NavBar route="list" />
+      <div className="flex items-center flex-col justify-center h-screen">
         <div className="flex items-center flex-col justify-center mt-12">
           <h1
             ref={textRef}
@@ -33,7 +33,7 @@ export default function Home({ recipes }) {
             MAGIC RECIPES
           </h1>
           <img src={'/Magic.svg'} className="w-1/2 lg:w-2/3 relative " />
-          <img src={'/Shadow.svg'} className="animate-spin-slow" />
+          <img src={'/Shadow.svg'} className="animate-spin-slow w-16 md:w-auto" />
         </div>
 
         <h1 className="font-bold mt-8 ">Latest spells adds</h1>

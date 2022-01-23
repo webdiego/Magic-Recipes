@@ -9,7 +9,7 @@ export default function Home({ recipes }) {
   return (
     <>
       <NavBar route="home" />
-      <div className="flex items-center flex-col justify-start h-screen ">
+      <div className="flex items-center flex-col justify-start min-h-screen ">
         <div className="mt-4">
           <h1 className="font-black text-[50px] md:text-[70px] lg:text-[100px] ">ALL RECIPES</h1>
         </div>
