@@ -15,7 +15,9 @@ function Pizza() {
           animation();
         }}
         src={'/pizza.svg'}
-        className={`w-22 self-end mx-8 mt-4 ${rotate ? 'rotate-center' : null} `}
+        className={`w-16 md:w-24 self-end mx-8 mt-4 ${
+          rotate ? 'rotate-center' : null
+        } cursor-pointer `}
       />
     </>
   );

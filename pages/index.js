@@ -1,55 +1,49 @@
 import Head from '../components/Head';
-import Pizza from '../components/Pizza';
 import { useRouter } from 'next/router';
-
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 export default function Home({ recipes }) {
   const router = useRouter();
 
   return (
     <>
       <Head />
-      <div className="flex items-center flex-col ">
-        <Pizza />
-        <h1 className="font-black absolute top-40 z-10 font-big">MAGIC RECIPES</h1>
-        <img src={'/Magic.svg'} className="w-full lg:w-1/3  relative" />
-
-        <h1 className="font-bold ">Latest spells adds</h1>
-        <div className="flex justify-between w-full max-w-2xl">
-          <div>
-            <p className="font-bold mb-4">Recipe name</p>
-            {recipes.map((recipe, id) => {
-              return (
-                <div key={id}>
-                  <h1 className="">{recipe.title}</h1>
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            <p className="font-bold mb-4 ">Created at</p>
-            {recipes.map((recipe, id) => {
-              return (
-                <div key={id} className="flex">
-                  <h1 className="">{new Date(recipe._createdAt).toUTCString().slice(0, 17)}</h1>
-                  <button
-                    onClick={() => router.push(`/recipes/${recipe.slug.current}`).toUTCString()}
-                    className="text-red-500 ml-5"
-                  >
-                    Go!
-                  </button>
-                </div>
-              );
-            })}
-          </div>
+      <div className="flex items-center flex-col justify-center">
+        <NavBar route="list" />
+        <div className="flex items-center flex-col justify-center mt-12">
+          <h1 className="font-black absolute top-28 z-10 text-[40px]  md:text-[70px] lg:text-[100px] ">
+            MAGIC RECIPES
+          </h1>
+          <img src={'/Magic.svg'} className="w-1/2 lg:w-2/3  relative " />
         </div>
 
-        <button
-          className="-rotate-45 font-bold text-3xl mt-14 "
-          onClick={() => router.push(`/list`)}
-        >
-          list
-        </button>
+        <h1 className="font-bold mt-8 ">Latest spells adds</h1>
+        <div className="flex flex-col justify-between items-center w-full max-w-2xl mt-2 mb-8 px-6 md:px-0">
+          <div className="flex justify-between items-center w-full max-w-2xl mt-6  ">
+            <p className="font-bold mb-4">Recipe name</p>
+            <p className="font-bold mb-4 ">Created at</p>
+          </div>
+          {recipes.slice(0, 5).map((recipe, id) => {
+            return (
+              <div key={id} className="flex justify-between items-center w-full max-w-2xl mt-2 ">
+                <h1 className="text-xs md:text-base">{recipe.title}</h1>
+                <div className="flex">
+                  <h1 className="text-xs md:text-base">
+                    {new Date(recipe._createdAt).toUTCString().slice(0, 17)}
+                  </h1>
+                  <button
+                    onClick={() => router.push(`/recipes/${recipe.slug.current}`)}
+                    className="text-red-500 ml-5 text-xs md:text-base"
+                  >
+                    Go!░
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -16,9 +16,6 @@ a {
   box-sizing: border-box;
 }
 
-.font-big {
-  font-size: 100px;
-}
 
 .rotate-center {
   -webkit-animation: rotate-center 1s cubic-bezier(0.77, 0, 0.175, 1) both;
