@@ -2,6 +2,10 @@ import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 
 export default function Recipe({ title, ingredients, preparation }) {
+  let ingre = [];
+  ingredients.map((ingredient) => ingre.push(ingredient.children[0].text));
+  let prepa = [];
+  preparation.map((p) => prepa.push(p.children[0].text));
   return (
     <>
       <NavBar route="home" route_2="list" />
@@ -11,20 +15,28 @@ export default function Recipe({ title, ingredients, preparation }) {
         <div className="my-8 w-full">
           <h1 className="text-lg font-bold mb-4">INGREDIENTS</h1>
           <div className="flex w-full flex-col md:flex-row justify-between">
-            {ingredients.map((ingredient, i) => {
-              return (
-                <div key={i}>
-                  <p>- {ingredient.children[0].text}</p>
-                </div>
-              );
-            })}
+            <div className="flex flex-col max-w-2xl">
+              {ingre.map((el, i) => {
+                return (
+                  <p className="mt-5 text-sm" key={i}>
+                    - {el}
+                  </p>
+                );
+              })}
+            </div>
+
             <img src={'/Teacher.svg'} className="w-44 md:w-72  justify-self-start self-end" />
           </div>
         </div>
         <div className="mt-8">
           <h1 className="text-lg font-bold mb-4">PREPARATION</h1>
-          {preparation.map((prep, i) => {
-            return <p key={i}>{prep.children[0].text}</p>;
+          {prepa.map((prep, i) => {
+           
+            return (
+              <p className="mt-5 text-sm" key={i}>
+                {prep}
+              </p>
+            );
           })}
         </div>
         <img src={'/Guarantee.svg'} className="w-20 md:w-32 my-12 self-center md:self-start" />
