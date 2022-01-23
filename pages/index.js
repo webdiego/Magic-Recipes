@@ -2,19 +2,38 @@ import Head from '../components/Head';
 import { useRouter } from 'next/router';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import { gsap } from 'gsap';
+import { useRef, useEffect } from 'react';
+
 export default function Home({ recipes }) {
   const router = useRouter();
-
+  const textRef = useRef();
+  useEffect(() => {
+    gsap
+      .timeline()
+      .from(textRef.current, {
+        ease: 'easeOut',
+        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+      })
+      .to(textRef.current, {
+        duration: '2',
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
+      });
+  });
   return (
     <>
       <Head />
       <div className="flex items-center flex-col justify-center">
         <NavBar route="list" />
         <div className="flex items-center flex-col justify-center mt-12">
-          <h1 className="font-black absolute top-28 z-10 text-[40px]  md:text-[70px] lg:text-[100px] ">
+          <h1
+            ref={textRef}
+            className="font-black absolute top-28 z-10 text-[40px]  md:text-[70px] lg:text-[100px] "
+          >
             MAGIC RECIPES
           </h1>
-          <img src={'/Magic.svg'} className="w-1/2 lg:w-2/3  relative " />
+          <img src={'/Magic.svg'} className="w-1/2 lg:w-2/3 relative " />
+          <img src={'/Shadow.svg'} className="animate-spin-slow" />
         </div>
 
         <h1 className="font-bold mt-8 ">Latest spells adds</h1>
