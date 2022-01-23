@@ -1,5 +1,5 @@
 import React from 'react';
-import Pizza from '../components/Pizza';
+import Pizza from './Pizza';
 import { useRouter } from 'next/router';
 
 export default function NavBar({ route, route_2 }) {
