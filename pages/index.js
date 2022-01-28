@@ -10,28 +10,34 @@ export default function Home({ recipes }) {
   const textRef = useRef();
   const herRef = useRef();
   const shadowRef = useRef();
+  const shadowMobileRef = useRef();
+
   useEffect(() => {
     gsap.timeline().to(textRef.current, {
       duration: 5,
       opacity: 1,
     });
 
-    gsap
-      .timeline({ repeat: -1 })
-      .from(herRef.current, {
-        duration: 4,
-        y: 0,
-      })
-      .to(herRef.current, {
-        duration: 4,
-        y: 26,
-        ease: Power3.ease,
-      })
-      .to(herRef.current, {
-        duration: 4,
-        y: 0,
-        ease: Power3.ease,
-      });
+    gsap.to(herRef.current, {
+      duration: 2,
+      y: 26,
+      repeat: -1,
+      yoyo: true,
+    });
+
+    gsap.to(shadowRef.current, {
+      duration: 2,
+      width: '200px',
+      repeat: -1,
+      yoyo: true,
+    });
+
+    gsap.to(shadowMobileRef.current, {
+      duration: 2,
+      width: '100px',
+      repeat: -1,
+      yoyo: true,
+    });
   });
   return (
     <>
@@ -41,12 +47,15 @@ export default function Home({ recipes }) {
         <div className="flex items-center flex-col justify-center md:mt-12">
           <h1
             ref={textRef}
-            className="font-black absolute top-48 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 "
+            className="font-black absolute top-36 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 "
           >
             MAGIC RECIPES
           </h1>
-          <img src={'/Magic.svg'} className="w-1/2 lg:w-2/3 relative " />
-          <img src={'/Shadow.svg'} className="animate-spin-slow w-16 md:w-auto" />
+          <img ref={herRef} src={'/Magic.svg'} className="w-1/2 lg:w-2/3 relative " />
+          <div className="h-36">
+            <img ref={shadowRef} src={'/Shadow.svg'} className="w-10 mt-10 hidden md:block" />
+            <img ref={shadowMobileRef} src={'/Shadow.svg'} className="w-10 mt-10 block md:hidden" />
+          </div>
         </div>
 
         <h1 className="font-bold mt-8 ">Latest spells adds</h1>
