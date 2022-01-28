@@ -2,7 +2,7 @@ import Head from '../components/Head';
 import { useRouter } from 'next/router';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import { gsap, Power3 } from 'gsap';
+import { gsap, Power3, Bounce } from 'gsap';
 import { useRef, useEffect } from 'react';
 
 export default function Home({ recipes }) {
@@ -11,34 +11,48 @@ export default function Home({ recipes }) {
   const herRef = useRef();
   const shadowRef = useRef();
   const shadowMobileRef = useRef();
-
+  var tl = gsap.timeline();
   useEffect(() => {
-    gsap.timeline().to(textRef.current, {
-      duration: 5,
+    tl.to(textRef.current, {
+      scale: 1.2,
+      duration: 2,
+      opacity: 1,
+      ease: Bounce.easeInOut,
+    }).to(textRef.current, {
+      scale: 1,
+      duration: 2,
+      opacity: 1,
+      ease: Power3.easeInOut,
+    });
+
+    tl.to(herRef.current, {
+      opacity: 1,
+    }).to(shadowRef.current, {
       opacity: 1,
     });
 
-    gsap.to(herRef.current, {
+    tl.to(herRef.current, {
       duration: 2,
       y: 26,
       repeat: -1,
       yoyo: true,
-    });
-
-    gsap.to(shadowRef.current, {
+    }).to(shadowRef.current, {
+      delay: 2,
       duration: 2,
       width: '200px',
       repeat: -1,
       yoyo: true,
     });
 
-    gsap.to(shadowMobileRef.current, {
+    tl.to(shadowMobileRef.current, {
+      opacity: 1,
+    }).to(shadowMobileRef.current, {
       duration: 2,
       width: '100px',
       repeat: -1,
       yoyo: true,
     });
-  });
+  }, [tl]);
   return (
     <>
       <Head />
@@ -47,14 +61,22 @@ export default function Home({ recipes }) {
         <div className="flex items-center flex-col justify-center md:mt-12">
           <h1
             ref={textRef}
-            className="font-black absolute top-36 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 "
+            className="font-black absolute top-48 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 scale-0"
           >
             MAGIC RECIPES
           </h1>
-          <img ref={herRef} src={'/Magic.svg'} className="w-1/2 lg:w-2/3 relative " />
-          <div className="h-36">
-            <img ref={shadowRef} src={'/Shadow.svg'} className="w-10 mt-10 hidden md:block" />
-            <img ref={shadowMobileRef} src={'/Shadow.svg'} className="w-10 mt-10 block md:hidden" />
+          <img ref={herRef} src={'/Magic.svg'} className="w-2/3 lg:w-2/3 relative opacity-0" />
+          <div className="h-36 ">
+            <img
+              ref={shadowRef}
+              src={'/Shadow.svg'}
+              className="w-10 mt-10 hidden md:block opacity-0"
+            />
+            <img
+              ref={shadowMobileRef}
+              src={'/Shadow.svg'}
+              className="w-10 mt-10 block md:hidden opacity-0"
+            />
           </div>
         </div>
 
