@@ -17,11 +17,13 @@ export default function Home({ recipes }) {
       scale: 1.2,
       duration: 2,
       opacity: 1,
+      y: 100,
       ease: Bounce.easeInOut,
     }).to(textRef.current, {
       scale: 1,
       duration: 2,
       opacity: 1,
+      y: 0,
       ease: Power3.easeInOut,
     });
 
@@ -36,13 +38,16 @@ export default function Home({ recipes }) {
       y: 26,
       repeat: -1,
       yoyo: true,
-    }).to(shadowRef.current, {
-      delay: 2,
-      duration: 2,
-      width: '200px',
-      repeat: -1,
-      yoyo: true,
-    });
+    }).to(
+      shadowRef.current,
+      {
+        duration: 2,
+        width: '200px',
+        repeat: -1,
+        yoyo: true,
+      },
+      '-=2'
+    );
 
     tl.to(shadowMobileRef.current, {
       opacity: 1,
