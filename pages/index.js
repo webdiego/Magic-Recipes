@@ -3,15 +3,33 @@ import { useRouter } from 'next/router';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { gsap, Power3, Bounce } from 'gsap';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function Home({ recipes }) {
   const router = useRouter();
   const textRef = useRef();
   const herRef = useRef();
   const shadowRef = useRef();
-  const shadowMobileRef = useRef();
+
   var tl = gsap.timeline();
+
+  const [width, setWidth] = useState('');
+
+  let resize;
+  if (width > 768) {
+    resize = '200px';
+  } else if (width < 768) {
+    resize = '100px';
+  }
+  
+  useEffect(() => {
+    setWidth(window.innerWidth);
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth);
+    });
+  }, [width]);
+
+
   useEffect(() => {
     tl.to(textRef.current, {
       scale: 1.2,
@@ -42,22 +60,14 @@ export default function Home({ recipes }) {
       shadowRef.current,
       {
         duration: 2,
-        width: '200px',
+        width: resize,
         repeat: -1,
         yoyo: true,
       },
       '-=2'
     );
+  }, [tl, resize]);
 
-    tl.to(shadowMobileRef.current, {
-      opacity: 1,
-    }).to(shadowMobileRef.current, {
-      duration: 2,
-      width: '100px',
-      repeat: -1,
-      yoyo: true,
-    });
-  }, [tl]);
   return (
     <>
       <Head />
@@ -72,16 +82,7 @@ export default function Home({ recipes }) {
           </h1>
           <img ref={herRef} src={'/Magic.svg'} className="w-2/3 lg:w-2/3 relative opacity-0" />
           <div className="h-36 ">
-            <img
-              ref={shadowRef}
-              src={'/Shadow.svg'}
-              className="w-10 mt-10 hidden md:block opacity-0"
-            />
-            <img
-              ref={shadowMobileRef}
-              src={'/Shadow.svg'}
-              className="w-10 mt-10 block md:hidden opacity-0"
-            />
+            <img ref={shadowRef} src={'/Shadow.svg'} className="w-10 mt-10  opacity-0" />
           </div>
         </div>
 
