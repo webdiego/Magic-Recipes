@@ -1,4 +1,4 @@
-import Head from '../components/Head';
+// import Head from '../components/Head';
 import { useRouter } from 'next/router';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -70,7 +70,7 @@ export default function Home({ recipes }) {
 
   return (
     <>
-      <Head />
+      {/* <Head /> */}
       <NavBar route="list" />
       <div className="flex items-center flex-col justify-center h-screen">
         <div className="flex items-center flex-col justify-center md:mt-12">
