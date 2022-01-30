@@ -9,9 +9,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Fira+Sans:wght@200;300&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
           />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
+          <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json"></link>
-          <link rel="apple-touch-icon" href="/icon.png"></link>
-          <meta name="theme-color" content="#000000"></meta>
         </Head>
         <body>
           <Main />

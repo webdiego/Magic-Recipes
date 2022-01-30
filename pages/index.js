@@ -1,4 +1,3 @@
-// import Head from '../components/Head';
 import { useRouter } from 'next/router';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -70,13 +69,12 @@ export default function Home({ recipes }) {
 
   return (
     <>
-      {/* <Head /> */}
       <NavBar route="list" />
-      <div className="flex items-center flex-col justify-center h-screen">
+      <div className="flex items-center flex-col justify-center h-full">
         <div className="flex items-center flex-col justify-center md:mt-12">
           <h1
             ref={textRef}
-            className="font-black absolute top-48 md:top-28 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 scale-0"
+            className="font-black absolute top-28 md:top-36 z-10 text-[40px] md:text-[70px] lg:text-[100px] opacity-0 scale-0"
           >
             MAGIC RECIPES
           </h1>
